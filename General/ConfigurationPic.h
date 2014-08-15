@@ -2,13 +2,13 @@
  *******************************************************************************
  ******                                                                   ******
  ****                                                                       ****
- ****                        Fichier Implementation.h                       ****
- ****                         Schémas d'implentation                        ****
+ ****                       Fichier ConfigurationPic.h                      ****
+ ****                          Configuration du pic                         ****
  ****                                                                       ****
  ******                                                                   ******
  ****                                                                       ****
  **** Commentaire :                                                         ****
- ****   Fichier d'implentations (header)                                    ****
+ ****   Fichier des configuration du pic                                    ****
  ****                                                                       ****
  ******                  ******************************                   ******
  ****                                                                       ****
@@ -39,8 +39,8 @@
  ****                                Toujours                               ****
  ****                                                                       ****
  ******************************************************************************/
-#ifndef IMPLEMENTATION_H
-#define	IMPLEMENTATION_H
+#ifndef CONFIGURATIONPIC_H
+#define	CONFIGURATIONPIC_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -61,5 +61,6 @@ extern "C" {
  ****                                Prototype                              ****
  ****                                                                       ****
  ******************************************************************************/
+ 
+// AUCUN, directement le code :)
 
-void RemappablePinInitialisation();

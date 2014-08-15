@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_31 (A) ò
+Microchip Technology Inc, vv3_31 (A) ê
 
 Tool Name:
   c:\program files (x86)\microchip\mplab c30\bin\bin\..\bin/pic30-coff-ld.exe
@@ -22,6 +22,7 @@ Command:
   -Lc:/program files (x86)/microchip/mplab c30/bin/bin/../../support/dsPIC33F/gld \
   Implementation.o \
   main.o \
+  ConfigurationPic.o \
   -Tp33FJ128MC802.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -43,14 +44,14 @@ c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(dat
 
 
 Selected CodeGuard Options:
-  FBS:BWRP:WRPROTECT_OFF
-  FBS:BSS:NO_FLASH
-  FBS:RBS:NO_RAM
+  FGS:GWRP:OFF
+  FGS:GSS:OFF
   FSS:SWRP:WRPROTECT_OFF
   FSS:SSS:NO_FLASH
   FSS:RSS:NO_RAM
-  FGS:GWRP:OFF
-  FGS:GSS:OFF
+  FBS:BWRP:WRPROTECT_OFF
+  FBS:BSS:NO_FLASH
+  FBS:RBS:NO_RAM
 
 CodeGuard FLASH Memory:
   boot    (none)
@@ -68,10 +69,10 @@ Program Memory  [Origin = 0x200, Length = 0x155fe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0x94            0xde  (222)
-.text                        0x294               0x1fa           0x2f7  (759)
-.dinit                       0x48e                 0xc            0x12  (18)
+.text                        0x294               0x128           0x1bc  (444)
+.dinit                       0x3bc                 0xc            0x12  (18)
 
-                     Total program memory used (bytes):          0x3e7  (999) <1%
+                     Total program memory used (bytes):          0x2ac  (684) <1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -96,13 +97,13 @@ stack                        0x904                              0x3efc  (16124)
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _globalTime
-                    0x0802                  _ledTime
+                    0x0800                  _ledTime
+                    0x0802                  _globalTime
 
 External Symbols in Data Memory (by name):
 
-                    0x0800                  _globalTime
-                    0x0802                  _ledTime
+                    0x0802                  _globalTime
+                    0x0800                  _ledTime
 
 External Symbols in Program Memory (by address):
 
@@ -112,8 +113,8 @@ External Symbols in Program Memory (by address):
                   0x000232                  __data_init_standard
                   0x000290                  __DefaultInterrupt
                   0x000294                  _RemappablePinInitialisation
-                  0x0003ee                  _main
-                  0x000474                  __T1Interrupt
+                  0x000336                  _main
+                  0x0003aa                  __T1Interrupt
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
@@ -125,12 +126,12 @@ External Symbols in Program Memory (by name):
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0xf80002                  __FSS.sec
-                  0x000474                  __T1Interrupt
+                  0x0003aa                  __T1Interrupt
                   0x000232                  __data_init
                   0x000232                  __data_init_standard
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x0003ee                  _main
+                  0x000336                  _main
 
 Memory Configuration
 
@@ -159,6 +160,7 @@ Linker script and memory map
 
 LOAD Implementation.o
 LOAD main.o
+LOAD ConfigurationPic.o
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp33FJ128MC802-coff.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
@@ -227,19 +229,19 @@ __FGS             0xf80004          0x2
 
 __FOSCSEL         0xf80006          0x2
  *(__FOSCSEL.sec*)
- __FOSCSEL.sec    0xf80006          0x2 main.o
+ __FOSCSEL.sec    0xf80006          0x2 ConfigurationPic.o
 
 __FOSC            0xf80008          0x2
  *(__FOSC.sec*)
- __FOSC.sec       0xf80008          0x2 main.o
+ __FOSC.sec       0xf80008          0x2 ConfigurationPic.o
 
 __FWDT            0xf8000a          0x2
  *(__FWDT.sec*)
- __FWDT.sec       0xf8000a          0x2 main.o
+ __FWDT.sec       0xf8000a          0x2 ConfigurationPic.o
 
 __FPOR            0xf8000c          0x2
  *(__FPOR.sec*)
- __FPOR.sec       0xf8000c          0x2 main.o
+ __FPOR.sec       0xf8000c          0x2 ConfigurationPic.o
 
 __FICD
  *(__FICD.sec*)
@@ -302,7 +304,7 @@ __FUID3
                   0x000014          0x4 LONG 0x290 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x290 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x290 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x474 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x3aa DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x290 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x290 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x290 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -430,7 +432,7 @@ __FUID3
                   0x000114          0x4 LONG 0x290 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x290 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x290 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0x474 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0x3aa DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011c          0x4 LONG 0x290 DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x290 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x290 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1633,38 +1635,40 @@ LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a
 END GROUP
 OUTPUT(Test-CAN.cof coff-pic30)
-LOAD FBS
-LOAD FSS
 LOAD FGS
+LOAD FSS
+LOAD FBS
 LOAD data_init
 LOAD default_isr
 LOAD heap
 
 __c30_signature
-                  0x000000         0x18
+                  0x000000         0x1e
  __c30_signature
                   0x000000          0x6 Implementation.o
  __c30_signature
                   0x000006          0x6 main.o
  __c30_signature
-                  0x00000c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
+                  0x00000c          0x6 ConfigurationPic.o
  __c30_signature
-                  0x000012          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
+                  0x000012          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
+ __c30_signature
+                  0x000018          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
 
 .ndata              0x0800          0x4
  .ndata             0x0800          0x4 main.o
-                    0x0800                  globalTime
-                    0x0802                  ledTime
+                    0x0800                  ledTime
+                    0x0802                  globalTime
 
 .heap               0x0804        0x100
  .heap              0x0804        0x100 heap
 
-.text             0x000294        0x1fa
- .text            0x000294        0x15a Implementation.o
+.text             0x000294        0x128
+ .text            0x000294         0xa2 Implementation.o
                   0x000294                  RemappablePinInitialisation
- .text            0x0003ee         0xa0 main.o
-                  0x0003ee                  main
-                  0x000474                  _T1Interrupt
+ .text            0x000336         0x86 main.o
+                  0x000336                  main
+                  0x0003aa                  _T1Interrupt
 
-.dinit            0x00048e          0xc
- .dinit           0x00048e          0xc data_init
+.dinit            0x0003bc          0xc
+ .dinit           0x0003bc          0xc data_init

@@ -2,13 +2,13 @@
  *******************************************************************************
  ******                                                                   ******
  ****                                                                       ****
- ****                        Fichier Implementation.h                       ****
- ****                         Schémas d'implentation                        ****
+ ****                       Fichier ConfigurationPic.c                      ****
+ ****                          Configuration du pic                         ****
  ****                                                                       ****
  ******                                                                   ******
  ****                                                                       ****
  **** Commentaire :                                                         ****
- ****   Fichier d'implentations (header)                                    ****
+ ****   Fichier de configuration du pic                                     ****
  ****                                                                       ****
  ******                  ******************************                   ******
  ****                                                                       ****
@@ -33,33 +33,18 @@
  ******                                                                   ******
  *******************************************************************************
  ******************************************************************************/
+ 
+ /* Inclusion générale des fichiers */
+ #include "../Include.h"
 
 /*******************************************************************************
- ****                                                                       ****
- ****                                Toujours                               ****
- ****                                                                       ****
+ ****                         BITS DE CONFIGURATION                         ****
  ******************************************************************************/
-#ifndef IMPLEMENTATION_H
-#define	IMPLEMENTATION_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
-
-#endif	/* IMPLEMENTATION_H */
-
-
-/*******************************************************************************
- ****                                                                       ****
- ****                                Prototype                              ****
- ****                                                                       ****
- ******************************************************************************/
-
-void RemappablePinInitialisation();
+	_FBS(RBS_NO_RAM&BSS_NO_BOOT_CODE&BWRP_WRPROTECT_OFF)
+	_FSS(RSS_NO_RAM&SSS_NO_FLASH&SWRP_WRPROTECT_OFF)
+	_FGS(GSS_OFF&GCP_OFF&GWRP_OFF)
+	_FOSCSEL(FNOSC_PRIPLL&IESO_ON)
+	_FOSC(FCKSM_CSECME&IOL1WAY_OFF&OSCIOFNC_OFF&POSCMD_HS)
+	_FWDT(FWDTEN_OFF&WINDIS_OFF&WDTPRE_PR32&WDTPOST_PS1)
+	_FPOR(PWMPIN_ON&HPOL_ON&LPOL_ON&ALTI2C_OFF&FPWRT_PWR128)
+	

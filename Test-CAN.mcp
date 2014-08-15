@@ -26,29 +26,37 @@ subfolder_lkr=
 [FILE_SUBFOLDERS]
 file_000=General
 file_001=.
-file_002=.
-file_003=General
+file_002=General
+file_003=.
+file_004=General
+file_005=General
 [GENERATED_FILES]
 file_000=no
 file_001=no
 file_002=no
 file_003=no
+file_004=no
+file_005=no
 [OTHER_FILES]
 file_000=no
 file_001=no
 file_002=no
 file_003=no
+file_004=no
+file_005=no
 [FILE_INFO]
 file_000=General\Implementation.c
 file_001=main.c
-file_002=Include.h
-file_003=General\Implementation.h
+file_002=General\ConfigurationPic.c
+file_003=Include.h
+file_004=General\Implementation.h
+file_005=General\ConfigurationPic.h
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 suite_state=
 [TOOL_SETTINGS]
 TS{7D9C6ECE-785D-44CB-BA22-17BF2E119622}=-g
-TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall
+TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall -O3
 TS{7DAC9A1D-4C45-45D6-B25A-D117C74E8F5A}=--heap=256 -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TS{509E5861-1E2A-483B-8B6B-CA8DB7F2DD78}=
 [INSTRUMENTED_TRACE]
