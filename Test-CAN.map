@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_31 (A) ê
+Microchip Technology Inc, vv3_31 (A) e
 
 Tool Name:
   c:\program files (x86)\microchip\mplab c30\bin\bin\..\bin/pic30-coff-ld.exe
@@ -23,6 +23,8 @@ Command:
   Implementation.o \
   main.o \
   ConfigurationPic.o \
+  ConfigurationOscillateur.o \
+  InitialisationPic.o \
   -Tp33FJ128MC802.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -69,69 +71,73 @@ Program Memory  [Origin = 0x200, Length = 0x155fe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0x94            0xde  (222)
-.text                        0x294               0x128           0x1bc  (444)
-.dinit                       0x3bc                 0xc            0x12  (18)
+.text                        0x294               0x120           0x1b0  (432)
+.dinit                       0x3b4                 0xa             0xf  (15)
 
-                     Total program memory used (bytes):          0x2ac  (684) <1%
+                     Total program memory used (bytes):          0x29d  (669) <1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.ndata                       0x800                   0             0x4  (4)
-.heap                        0x804                   0           0x100  (256)
+.ndata                       0x800                   0             0x2  (2)
+.heap                        0x802                   0           0x100  (256)
 
-                        Total data memory used (bytes):          0x104  (260) 1%
+                        Total data memory used (bytes):          0x102  (258) 1%
 
 
 Dynamic Memory Usage
 
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
-heap                         0x804                               0x100  (256)
-stack                        0x904                              0x3efc  (16124)
+heap                         0x802                               0x100  (256)
+stack                        0x902                              0x3efe  (16126)
 
-                        Maximum dynamic memory (bytes):         0x3ffc  (16380)
+                        Maximum dynamic memory (bytes):         0x3ffe  (16382)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _ledTime
-                    0x0802                  _globalTime
+                    0x0800                  _attenteInitialisation
 
 External Symbols in Data Memory (by name):
 
-                    0x0802                  _globalTime
-                    0x0800                  _ledTime
+                    0x0800                  _attenteInitialisation
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000222                  __psv_init
-                  0x000232                  __data_init
                   0x000232                  __data_init_standard
+                  0x000232                  __data_init
                   0x000290                  __DefaultInterrupt
                   0x000294                  _RemappablePinInitialisation
-                  0x000336                  _main
-                  0x0003aa                  __T1Interrupt
+                  0x000336                  _ConfigurationEntreeSortie
+                  0x00033a                  _InitialisationDuPic
+                  0x000374                  _main
+                  0x000378                  __T1Interrupt
+                  0x0003a0                  _ConfigurationOscillateurPic
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
+                  0x000336                  _ConfigurationEntreeSortie
+                  0x0003a0                  _ConfigurationOscillateurPic
+                  0x00033a                  _InitialisationDuPic
                   0x000294                  _RemappablePinInitialisation
                   0x000290                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0xf80002                  __FSS.sec
-                  0x0003aa                  __T1Interrupt
+                  0x000378                  __T1Interrupt
                   0x000232                  __data_init
                   0x000232                  __data_init_standard
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x000336                  _main
+                  0x000374                  _main
 
 Memory Configuration
 
@@ -161,6 +167,8 @@ Linker script and memory map
 LOAD Implementation.o
 LOAD main.o
 LOAD ConfigurationPic.o
+LOAD ConfigurationOscillateur.o
+LOAD InitialisationPic.o
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp33FJ128MC802-coff.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
@@ -304,7 +312,7 @@ __FUID3
                   0x000014          0x4 LONG 0x290 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x290 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x290 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x3aa DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x378 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x290 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x290 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x290 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -432,7 +440,7 @@ __FUID3
                   0x000114          0x4 LONG 0x290 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x290 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x290 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0x3aa DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0x378 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011c          0x4 LONG 0x290 DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x290 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x290 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1643,7 +1651,7 @@ LOAD default_isr
 LOAD heap
 
 __c30_signature
-                  0x000000         0x1e
+                  0x000000         0x2a
  __c30_signature
                   0x000000          0x6 Implementation.o
  __c30_signature
@@ -1651,24 +1659,32 @@ __c30_signature
  __c30_signature
                   0x00000c          0x6 ConfigurationPic.o
  __c30_signature
-                  0x000012          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
+                  0x000012          0x6 ConfigurationOscillateur.o
  __c30_signature
-                  0x000018          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
+                  0x000018          0x6 InitialisationPic.o
+ __c30_signature
+                  0x00001e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
+ __c30_signature
+                  0x000024          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
 
-.ndata              0x0800          0x4
- .ndata             0x0800          0x4 main.o
-                    0x0800                  ledTime
-                    0x0802                  globalTime
+.ndata              0x0800          0x2
+ .ndata             0x0800          0x2 InitialisationPic.o
+                    0x0800                  attenteInitialisation
 
-.heap               0x0804        0x100
- .heap              0x0804        0x100 heap
+.heap               0x0802        0x100
+ .heap              0x0802        0x100 heap
 
-.text             0x000294        0x128
- .text            0x000294         0xa2 Implementation.o
+.text             0x000294        0x120
+ .text            0x000294         0xa6 Implementation.o
                   0x000294                  RemappablePinInitialisation
- .text            0x000336         0x86 main.o
-                  0x000336                  main
-                  0x0003aa                  _T1Interrupt
+                  0x000336                  ConfigurationEntreeSortie
+ .text            0x00033a         0x3a InitialisationPic.o
+                  0x00033a                  InitialisationDuPic
+ .text            0x000374         0x2c main.o
+                  0x000374                  main
+                  0x000378                  _T1Interrupt
+ .text            0x0003a0         0x14 ConfigurationOscillateur.o
+                  0x0003a0                  ConfigurationOscillateurPic
 
-.dinit            0x0003bc          0xc
- .dinit           0x0003bc          0xc data_init
+.dinit            0x0003b4          0xa
+ .dinit           0x0003b4          0xa data_init

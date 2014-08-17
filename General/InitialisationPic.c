@@ -2,20 +2,21 @@
  *******************************************************************************
  ******                                                                   ******
  ****                                                                       ****
- ****                       Fichier ConfigurationPic.c                      ****
- ****                          Configuration du pic                         ****
+ ****                      Fichier InitialisationPic.c                      ****
+ ****                    Fonction d'initialisation du PIC                   ****
  ****                                                                       ****
  ******                                                                   ******
  ****                                                                       ****
  **** Commentaire :                                                         ****
- ****   Fichier de configuration du pic                                     ****
+ ****   Fichier pour l'initialisation du PIC. Mettre toutes les fonction    ****
+ **** pour l'initialisation du PIC                                          ****
  ****                                                                       ****
  ******                  ******************************                   ******
  ****                                                                       ****
  **** Créateur :                                                            ****
  ****                                                     VOILLEQUIN Arnaud ****
  ****  Date de création :                                                   ****
- ****                                                            14/08/2014 ****
+ ****                                                            17/08/2014 ****
  ****                                                                       ****
  ******                  ******************************                   ******
  ****                                                                       ****
@@ -33,19 +34,37 @@
  ******                                                                   ******
  *******************************************************************************
  ******************************************************************************/
- 
- /* Inclusion générale des fichiers */
- #include "../Include.h"
 
-/*******************************************************************************
- ****                         BITS DE CONFIGURATION                         ****
- ******************************************************************************/
-	_FBS(RBS_NO_RAM&BSS_NO_BOOT_CODE&BWRP_WRPROTECT_OFF)
-	_FSS(RSS_NO_RAM&SSS_NO_FLASH&SWRP_WRPROTECT_OFF)
-	_FGS(GSS_OFF&GCP_OFF&GWRP_OFF)
-	_FOSCSEL(FNOSC_PRIPLL&IESO_ON)
-	_FOSC(FCKSM_CSECME&IOL1WAY_OFF&OSCIOFNC_OFF&POSCMD_HS)
-	_FWDT(FWDTEN_OFF&WINDIS_OFF&WDTPRE_PR32&WDTPOST_PS1)
-	_FPOR(PWMPIN_ON&HPOL_ON&LPOL_ON&ALTI2C_OFF&FPWRT_PWR128)
+#include "../Include.h"
+
+// Variables utilisés dans ces fonctions
+
+volatile unsigned int attenteInitialisation = 0;
+
+
+void InitialisationDuPic()
+{
+	// Attente pour commencer l'initialisation
+	for(attenteInitialisation=0;attenteInitialisation<10000;attenteInitialisation++);
+
+	// Configuration de l'oscillateur
+	ConfigurationOscillateurPic();
+
+	// Configuration des IO
+	ConfigurationEntreeSortie();
 	
+	
+	//Timer 1 à xHz pour globalTime (pas envie de faire un gros calcul)
+	TMR1 = 0;
+	PR1 = 45000;
+	T1CON = 0b1000000000100000;
+
+	//Interruption du timer
+	IFS0bits.T1IF = 0;
+	IPC0bits.T1IP = 2;
+	IEC0bits.T1IE = 1;	
+
+	while(attenteInitialisation<100);
+
+}
 

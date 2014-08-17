@@ -53,7 +53,7 @@
  *                 Quartz 1 +|  9              20 |+ VCap (Capa 10uF)          *
  *                 Quartz 2 +| 10              19 |+ Vss  (GND)                *
  *                          -| 11              18 |-                           *
- *                          -| 12              17 |-                           *
+ *                LED_VERTE -| 12              17 |-                           *
  *               Vdd (3.3V) +| 13              16 |-                           *
  *                          -| 14              15 |-                           *
  *                           |                    |                            *
@@ -250,6 +250,9 @@
     /* Pin reprogrammable 15 (pin 26)*/
     RPOR7bits.RP15R = 0b00000;
  
- 
  }
  
+ void ConfigurationEntreeSortie()
+ {
+ 	TRISAbits.TRISA4 = 0; 
+ }

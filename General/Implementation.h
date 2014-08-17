@@ -63,3 +63,4 @@ extern "C" {
  ******************************************************************************/
 
 void RemappablePinInitialisation();
+void ConfigurationEntreeSortie();

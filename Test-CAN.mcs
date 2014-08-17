@@ -9,7 +9,7 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall -O3
 TraceCmdString=
@@ -22,7 +22,7 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall -O3
 TraceCmdString=
@@ -35,12 +35,38 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall -O3
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File003]
+Location=C:\Users\nono\pic\Test-CAN\ConfigurationOscillateur.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC802
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -O3
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File004]
+Location=C:\Users\nono\pic\Test-CAN\InitialisationPic.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC802
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -O3
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File005]
 Location=C:\Users\nono\pic\Test-CAN\Test-CAN.cof
 Folder=Output
 DeviceName=dsPIC33FJ128MC802
@@ -48,12 +74,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-ld.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=--heap=256 -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
 DebugOptions=--defsym=__MPLAB_DEBUG=1
-[File004]
+[File006]
 Location=C:\Users\nono\pic\Test-CAN\Test-CAN.hex
 Folder=Output
 DeviceName=dsPIC33FJ128MC802
@@ -61,7 +87,7 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\MPLAB C30\bin\pic30-ld.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|General\Implementation.c|main.c|General\ConfigurationPic.c|General\ConfigurationOscillateur.c|General\InitialisationPic.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=--heap=256 -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
