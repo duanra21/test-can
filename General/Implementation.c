@@ -44,11 +44,11 @@
  *                           |                    |                            *
  *                    /MCLR +|  1              28 |+ AVdd (3.3V)               *
  *                          -|  2              27 |+ AVss (GND)                *
- *                          -|  3              26 |-                           *
- *                          -|  4              25 |-                           *
- *                          -|  5              24 |-                           *
- *                          -|  6              23 |-                           *
- *                          -|  7              22 |-                           *
+ *                          -|  3              26 |- PWM (a faire)             *
+ *                          -|  4              25 |- PWM (a faire)             *
+ *                          -|  5              24 |- PWM (a faire)             *
+ *                  UART Rx -|  6              23 |- PWM (a faire)             *
+ *                  UART Tx -|  7              22 |-                           *
  *                Vss (GND) +|  8              21 |-                           *
  *                 Quartz 1 +|  9              20 |+ VCap (Capa 10uF)          *
  *                 Quartz 2 +| 10              19 |+ Vss  (GND)                *
@@ -119,6 +119,7 @@
     
     /* Output Compare Fault A */
     RPINR11bits.OCFAR = 0b11111;
+    
     /* PWM1 Fault */
     RPINR12bits.FLTA1R = 0b11111;
     
@@ -150,7 +151,7 @@
     RPINR18bits.U1CTSR = 0b11111;
     
     /* UART2 Receive */
-    RPINR19bits.U2RXR = 0b11111;
+    RPINR19bits.U2RXR = 0b00010;
     
     /* UART2 Clear To Send */
     RPINR19bits.U2CTSR = 0b11111;
@@ -212,7 +213,7 @@
     RPOR1bits.RP2R = 0b00000;
     
     /* Pin reprogrammable 3 (pin 7)*/
-    RPOR1bits.RP3R = 0b00000;
+    RPOR1bits.RP3R = 0b00101;
     
     /* Pin reprogrammable 4 (pin 11)*/
     RPOR2bits.RP4R = 0b00000;
@@ -254,5 +255,36 @@
  
  void ConfigurationEntreeSortie()
  {
- 	TRISAbits.TRISA4 = 0; 
+	 TRISAbits.TRISA0 = 0;
+	 TRISAbits.TRISA1 = 0;
+	 TRISAbits.TRISA2 = 0;
+	 TRISAbits.TRISA3 = 0;
+	 TRISAbits.TRISA4 = 0;
+	 
+	 TRISBbits.TRISB0 = 0;
+	 TRISBbits.TRISB1 = 0;
+	 TRISBbits.TRISB2 = 1;
+	 TRISBbits.TRISB3 = 0;
+	 TRISBbits.TRISB4 = 0;
+	 TRISBbits.TRISB5 = 0;
+	 TRISBbits.TRISB6 = 0;
+	 TRISBbits.TRISB7 = 0;
+	 TRISBbits.TRISB8 = 0;
+	 TRISBbits.TRISB9 = 0;
+	 TRISBbits.TRISB10 = 0;
+	 TRISBbits.TRISB11 = 0;
+	 TRISBbits.TRISB12 = 0;
+	 TRISBbits.TRISB13 = 0;
+	 TRISBbits.TRISB14 = 0;
+	 TRISBbits.TRISB15 = 0;
+	 
+	 // Les entrées analogiques
+	 AD1PCFGLbits.PCFG0 = 0;
+	 AD1PCFGLbits.PCFG1 = 0;
+	 AD1PCFGLbits.PCFG2 = 0;
+	 AD1PCFGLbits.PCFG3 = 0;
+	 AD1PCFGLbits.PCFG4 = 1;
+	 AD1PCFGLbits.PCFG5 = 0;
+	 
+	
  }
