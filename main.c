@@ -68,8 +68,9 @@ void main(void)
         // AH AHHH CODE VIDE :p
         //debugUARTSendString('c');
         //attente = 0;
-        //for(attente; attente<100; attente++);
+        //for(attente; attente<1000; attente++);
         //printf("hi");
+        PutChar('c');
 	}
 }
 
@@ -84,7 +85,7 @@ void __attribute__((__interrupt__,__auto_psv__)) _T1Interrupt(void)
 }
 
 
-int putchar(int c)
+int PutChar(int c)
 {
 	if(U2STAbits.TRMT)
 	{

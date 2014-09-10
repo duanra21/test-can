@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_31 (A) w
+Microchip Technology Inc, vv3_31 (A) p
 
 Tool Name:
   c:\program files (x86)\microchip\mplab c30\bin\bin\..\bin/pic30-coff-ld.exe
@@ -28,8 +28,6 @@ Command:
   -Tp33FJ128MC802.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
-  --defsym=__MPLAB_DEBUGGER_PICKIT2=1 \
-  --defsym=__ICD2RAM=1 \
   --heap=256 \
   -Map=Test-CAN.map \
   --report-mem \
@@ -45,17 +43,25 @@ c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt
                               (_resetPRI)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o) (_data_init_standard)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(_iob.XXo)
+                              main.o (_iob)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(fputc.XXo)
+                              main.o (fputc)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(flsbuf.XXo)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(fputc.XXo) (_flsbuf)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(write.o)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(fputc.XXo) (write)
 
 
 Selected CodeGuard Options:
-  FGS:GWRP:OFF
-  FGS:GSS:OFF
-  FSS:SWRP:WRPROTECT_OFF
-  FSS:SSS:NO_FLASH
-  FSS:RSS:NO_RAM
   FBS:BWRP:WRPROTECT_OFF
   FBS:BSS:NO_FLASH
   FBS:RBS:NO_RAM
+  FSS:SWRP:WRPROTECT_OFF
+  FSS:SSS:NO_FLASH
+  FSS:RSS:NO_RAM
+  FGS:GWRP:OFF
+  FGS:GSS:OFF
 
 CodeGuard FLASH Memory:
   boot    (none)
@@ -72,101 +78,112 @@ Program Memory  [Origin = 0x200, Length = 0x155fe]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200                0x94            0xde  (222)
-.text                        0x294               0x210           0x318  (792)
-.dinit                       0x4a4                0x1a            0x27  (39)
-.text                        0x4be                0x14            0x1e  (30)
+.text                        0x200               0x216           0x321  (801)
+.text                        0x416               0x326           0x4b9  (1209)
+.dinit                       0x73c                0x40            0x60  (96)
+.text                        0x77c                0x1a            0x27  (39)
 
-                     Total program memory used (bytes):          0x43b  (1083) <1%
+                     Total program memory used (bytes):          0x861  (2145) 1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.icd                         0x800                0x50            0x50  (80)
-.nbss                        0x850                   0           0x200  (512)
-.ndata                       0xa50                   0             0x8  (8)
-.heap                        0xa58                   0           0x100  (256)
+.nbss                        0x800                   0           0x200  (512)
+.ndata                       0xa00                   0             0x8  (8)
+.data                        0xa08                   0            0x26  (38)
+.bss                         0xa2e                   0             0x6  (6)
+.heap                        0xa34                   0           0x100  (256)
 
-                        Total data memory used (bytes):          0x358  (856) 5%
+                        Total data memory used (bytes):          0x334  (820) 5%
 
 
 Dynamic Memory Usage
 
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
-heap                         0xa58                               0x100  (256)
-stack                        0xb58                              0x3ca8  (15528)
+heap                         0xa34                               0x100  (256)
+stack                        0xb34                              0x3ccc  (15564)
 
-                        Maximum dynamic memory (bytes):         0x3da8  (15784)
+                        Maximum dynamic memory (bytes):         0x3dcc  (15820)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0850                  _DebugRXBuffer
-                    0x0950                  _DebugTXBuffer
-                    0x0a50                  _DebugRXOutPtr
-                    0x0a51                  _DebugRXInPtr
-                    0x0a52                  _DebugTXOutPtr
-                    0x0a53                  _DebugTXInPtr
-                    0x0a54                  ___C30_UART
-                    0x0a56                  _attenteInitialisation
+                    0x0800                  _DebugTXBuffer
+                    0x0900                  _DebugRXBuffer
+                    0x0a00                  ___C30_UART
+                    0x0a02                  _DebugTXInPtr
+                    0x0a03                  _DebugTXOutPtr
+                    0x0a04                  _DebugRXInPtr
+                    0x0a05                  _DebugRXOutPtr
+                    0x0a06                  _attenteInitialisation
+                    0x0a08                  __Files
+                    0x0a0a                  __iob
+                    0x0a2e                  __sobuf
+                    0x0a30                  __sibuf
+                    0x0a32                  __outdone
 
 External Symbols in Data Memory (by name):
 
-                    0x0850                  _DebugRXBuffer
-                    0x0a51                  _DebugRXInPtr
-                    0x0a50                  _DebugRXOutPtr
-                    0x0950                  _DebugTXBuffer
-                    0x0a53                  _DebugTXInPtr
-                    0x0a52                  _DebugTXOutPtr
-                    0x0a54                  ___C30_UART
-                    0x0a56                  _attenteInitialisation
+                    0x0900                  _DebugRXBuffer
+                    0x0a04                  _DebugRXInPtr
+                    0x0a05                  _DebugRXOutPtr
+                    0x0800                  _DebugTXBuffer
+                    0x0a02                  _DebugTXInPtr
+                    0x0a03                  _DebugTXOutPtr
+                    0x0a08                  __Files
+                    0x0a00                  ___C30_UART
+                    0x0a0a                  __iob
+                    0x0a32                  __outdone
+                    0x0a30                  __sibuf
+                    0x0a2e                  __sobuf
+                    0x0a06                  _attenteInitialisation
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000222                  __psv_init
-                  0x000232                  __data_init
                   0x000232                  __data_init_standard
+                  0x000232                  __data_init
                   0x000290                  __DefaultInterrupt
-                  0x000294                  _RemappablePinInitialisation
-                  0x000340                  _ConfigurationEntreeSortie
-                  0x000378                  _main
-                  0x00037c                  __T1Interrupt
-                  0x0003a4                  _putchar
-                  0x0003be                  _debugUARTSendString
-                  0x0003d6                  _debugUARTHandle
-                  0x0003f2                  __U2TXInterrupt
-                  0x00041e                  __U2RXInterrupt
-                  0x000444                  _InitialisationDuPic
-                  0x0004be                  _ConfigurationOscillateurPic
+                  0x000416                  _RemappablePinInitialisation
+                  0x000578                  _ConfigurationEntreeSortie
+                  0x0005b4                  _main
+                  0x0005c2                  __T1Interrupt
+                  0x0005f8                  _PutChar
+                  0x000624                  _debugUARTSendString
+                  0x000642                  _debugUARTHandle
+                  0x000668                  __U2TXInterrupt
+                  0x00069e                  __U2RXInterrupt
+                  0x0006ca                  _InitialisationDuPic
+                  0x00077c                  _ConfigurationOscillateurPic
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000340                  _ConfigurationEntreeSortie
-                  0x0004be                  _ConfigurationOscillateurPic
-                  0x000444                  _InitialisationDuPic
-                  0x000294                  _RemappablePinInitialisation
+                  0x000578                  _ConfigurationEntreeSortie
+                  0x00077c                  _ConfigurationOscillateurPic
+                  0x0006ca                  _InitialisationDuPic
+                  0x0005f8                  _PutChar
+                  0x000416                  _RemappablePinInitialisation
                   0x000290                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0xf80002                  __FSS.sec
-                  0x00037c                  __T1Interrupt
-                  0x00041e                  __U2RXInterrupt
-                  0x0003f2                  __U2TXInterrupt
+                  0x0005c2                  __T1Interrupt
+                  0x00069e                  __U2RXInterrupt
+                  0x000668                  __U2TXInterrupt
                   0x000232                  __data_init
                   0x000232                  __data_init_standard
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x0003d6                  _debugUARTHandle
-                  0x0003be                  _debugUARTSendString
-                  0x000378                  _main
-                  0x0003a4                  _putchar
+                  0x000642                  _debugUARTHandle
+                  0x000624                  _debugUARTSendString
+                  0x0005b4                  _main
 
 Memory Configuration
 
@@ -227,7 +244,7 @@ LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp3
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200         0x94
+.text             0x000200        0x216
  *(.init)
  .init            0x000200         0x32 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
                   0x000200                  _resetPRI
@@ -242,9 +259,15 @@ LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp3
  .isr             0x000290          0x4 default_isr
                   0x000290                  _DefaultInterrupt
  *(.libc)
+ .libc            0x000294         0x6e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(write.o)
+                  0x000294                  write
  *(.libm)
  *(.libdsp)
  *(.lib*)
+ .libc.fputc      0x000302         0x8e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(fputc.XXo)
+                  0x000302                  fputc
+ .libc._flsbuf    0x000390         0x86 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(flsbuf.XXo)
+                  0x000390                  _flsbuf
 
 usercode
  *(usercode)
@@ -295,10 +318,6 @@ __FUID2
 __FUID3
  *(__FUID3.sec*)
 
-.icd                0x0800         0x50
-                    0x0850                  . = (. + DEFINED (__ICD2RAM)?0x50:0x0)
- *fill*             0x0800         0x5000
-
 .comment
  *(.comment)
 
@@ -345,7 +364,7 @@ __FUID3
                   0x000014          0x4 LONG 0x290 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x290 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x290 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x37c DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x5c2 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x290 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x290 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x290 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -372,8 +391,8 @@ __FUID3
                   0x00004a          0x4 LONG 0x290 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004c          0x4 LONG 0x290 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004e          0x4 LONG 0x290 DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000050          0x4 LONG 0x41e DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000052          0x4 LONG 0x3f2 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000050          0x4 LONG 0x69e DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000052          0x4 LONG 0x668 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000054          0x4 LONG 0x290 DEFINED (__SPI2ErrInterrupt)?ABSOLUTE (__SPI2ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000056          0x4 LONG 0x290 DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000058          0x4 LONG 0x290 DEFINED (__C1RxRdyInterrupt)?ABSOLUTE (__C1RxRdyInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -473,7 +492,7 @@ __FUID3
                   0x000114          0x4 LONG 0x290 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x290 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x290 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0x37c DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0x5c2 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011c          0x4 LONG 0x290 DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x290 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x290 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -500,8 +519,8 @@ __FUID3
                   0x00014a          0x4 LONG 0x290 DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00014c          0x4 LONG 0x290 DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00014e          0x4 LONG 0x290 DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000150          0x4 LONG 0x41e DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000152          0x4 LONG 0x3f2 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000150          0x4 LONG 0x69e DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000152          0x4 LONG 0x668 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000154          0x4 LONG 0x290 DEFINED (__AltSPI2ErrInterrupt)?ABSOLUTE (__AltSPI2ErrInterrupt):DEFINED (__SPI2ErrInterrupt)?ABSOLUTE (__SPI2ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000156          0x4 LONG 0x290 DEFINED (__AltSPI2Interrupt)?ABSOLUTE (__AltSPI2Interrupt):DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000158          0x4 LONG 0x290 DEFINED (__AltC1RxRdyInterrupt)?ABSOLUTE (__AltC1RxRdyInterrupt):DEFINED (__C1RxRdyInterrupt)?ABSOLUTE (__C1RxRdyInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1670,23 +1689,21 @@ __FUID3
                     0x0230                  _UART2 = 0x230
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
-                    0x0001                  __MPLAB_DEBUGGER_PICKIT2 = 0x1
-                    0x0001                  __ICD2RAM = 0x1
 START GROUP
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a
 END GROUP
 OUTPUT(Test-CAN.cof coff-pic30)
-LOAD FGS
-LOAD FSS
 LOAD FBS
+LOAD FSS
+LOAD FGS
 LOAD data_init
 LOAD default_isr
 LOAD heap
 
 __c30_signature
-                  0x000000         0x2a
+                  0x000000         0x42
  __c30_signature
                   0x000000          0x6 Implementation.o
  __c30_signature
@@ -1701,43 +1718,62 @@ __c30_signature
                   0x00001e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
  __c30_signature
                   0x000024          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
+ __c30_signature
+                  0x00002a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(_iob.XXo)
+ __c30_signature
+                  0x000030          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(fputc.XXo)
+ __c30_signature
+                  0x000036          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(flsbuf.XXo)
+ __c30_signature
+                  0x00003c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(write.o)
 
-.nbss               0x0850        0x200
- .nbss              0x0850        0x200 main.o
-                    0x0850                  DebugRXBuffer
-                    0x0950                  DebugTXBuffer
+.nbss               0x0800        0x200
+ .nbss              0x0800        0x200 main.o
+                    0x0800                  DebugTXBuffer
+                    0x0900                  DebugRXBuffer
 
-.ndata              0x0a50          0x8
- .ndata             0x0a50          0x6 main.o
-                    0x0a50                  DebugRXOutPtr
-                    0x0a51                  DebugRXInPtr
-                    0x0a52                  DebugTXOutPtr
-                    0x0a53                  DebugTXInPtr
-                    0x0a54                  __C30_UART
- .ndata             0x0a56          0x2 InitialisationPic.o
-                    0x0a56                  attenteInitialisation
+.ndata              0x0a00          0x8
+ .ndata             0x0a00          0x6 main.o
+                    0x0a00                  __C30_UART
+                    0x0a02                  DebugTXInPtr
+                    0x0a03                  DebugTXOutPtr
+                    0x0a04                  DebugRXInPtr
+                    0x0a05                  DebugRXOutPtr
+ .ndata             0x0a06          0x2 InitialisationPic.o
+                    0x0a06                  attenteInitialisation
 
-.heap               0x0a58        0x100
- .heap              0x0a58        0x100 heap
+.data               0x0a08         0x26
+ .data              0x0a08         0x26 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(_iob.XXo)
+                    0x0a08                  _Files
+                    0x0a0a                  _iob
 
-.text             0x000294        0x210
- .text            0x000294         0xe4 Implementation.o
-                  0x000294                  RemappablePinInitialisation
-                  0x000340                  ConfigurationEntreeSortie
- .text            0x000378         0xcc main.o
-                  0x000378                  main
-                  0x00037c                  _T1Interrupt
-                  0x0003a4                  putchar
-                  0x0003be                  debugUARTSendString
-                  0x0003d6                  debugUARTHandle
-                  0x0003f2                  _U2TXInterrupt
-                  0x00041e                  _U2RXInterrupt
- .text            0x000444         0x60 InitialisationPic.o
-                  0x000444                  InitialisationDuPic
+.bss                0x0a2e          0x6
+ .bss               0x0a2e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libc-coff.a(_iob.XXo)
+                    0x0a2e                  _sobuf
+                    0x0a30                  _sibuf
+                    0x0a32                  _outdone
 
-.dinit            0x0004a4         0x1a
- .dinit           0x0004a4         0x1a data_init
+.heap               0x0a34        0x100
+ .heap              0x0a34        0x100 heap
 
-.text             0x0004be         0x14
- .text            0x0004be         0x14 ConfigurationOscillateur.o
-                  0x0004be                  ConfigurationOscillateurPic
+.text             0x000416        0x326
+ .text            0x000416        0x19e Implementation.o
+                  0x000416                  RemappablePinInitialisation
+                  0x000578                  ConfigurationEntreeSortie
+ .text            0x0005b4        0x116 main.o
+                  0x0005b4                  main
+                  0x0005c2                  _T1Interrupt
+                  0x0005f8                  PutChar
+                  0x000624                  debugUARTSendString
+                  0x000642                  debugUARTHandle
+                  0x000668                  _U2TXInterrupt
+                  0x00069e                  _U2RXInterrupt
+ .text            0x0006ca         0x72 InitialisationPic.o
+                  0x0006ca                  InitialisationDuPic
+
+.dinit            0x00073c         0x40
+ .dinit           0x00073c         0x40 data_init
+
+.text             0x00077c         0x1a
+ .text            0x00077c         0x1a ConfigurationOscillateur.o
+                  0x00077c                  ConfigurationOscillateurPic

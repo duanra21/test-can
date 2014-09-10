@@ -63,6 +63,7 @@ extern "C" {
  ******************************************************************************/
 #include <p33FJ128MC802.h>
 #include <libPIC30.h>
+#include <stdio.h>
 #include "General/InitialisationPic.h"
 #include "General/ConfigurationPic.h"
 #include "General/ConfigurationOscillateur.h"
